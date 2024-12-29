@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Us</title>
+  <style>
+    /* General Reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+      color: #333;
+      background-color: #f4f4f9;
+    }
+
+    header {
+      background-color: #1e88e5;
+      color: #fff;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    header .logo {
+      font-size: 1.5rem;
+      font-weight: bold;
+    }
+
+    header nav ul {
+      display: flex;
+      list-style: none;
+    }
+
+    header nav ul li {
+      margin: 0 1rem;
+    }
+
+    header nav ul li a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    header nav ul li a:hover {
+      text-decoration: underline;
+    }
+
+    .about {
+      padding: 2rem 1rem;
+      text-align: center;
+    }
+
+    .about h1 {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .about p {
+      margin: 1rem 0;
+      font-size: 1.2rem;
+      color: #666;
+    }
+
+    .values {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1rem;
+      margin: 2rem 1rem;
+      text-align: center;
+    }
+
+    .value-card {
+      background: #fff;
+      padding: 1.5rem;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .value-card img {
+      max-width: 80px;
+      margin-bottom: 1rem;
+    }
+
+    .value-card h3 {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .value-card p {
+      font-size: 1rem;
+      color: #666;
+    }
+
+    footer {
+      background-color: #1e88e5;
+      color: #fff;
+      text-align: center;
+      padding: 1rem;
+      margin-top: 2rem;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo">PharmaCare</div>
+    <nav>
+      <ul>
+        <li><a href="pharmacyhome.html">Home</a></li>
+        <li><a href="pharmacyproducts.html">Products</a></li>
+        <li><a href="pharmacyabout.html">About Us</a></li>
+        <li><a href="pharmacycontact.html">Contact Us</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section class="about">
+    <h1>About PharmaCare</h1>
+    <p>PharmaCare is dedicated to providing high-quality medicines and healthcare products at affordable prices.</p>
+    <p>With a passion for wellness and a commitment to quality, we aim to be your trusted pharmacy partner.</p>
+  </section>
+
+  <section class="values">
+    <div class="value-card">
+      <img src="https://via.placeholder.com/80" alt="Mission">
+      <h3>Our Mission</h3>
+      <p>To make healthcare accessible and affordable for everyone.</p>
+    </div>
+    <div class="value-card">
+      <img src="https://via.placeholder.com/80" alt="Vision">
+      <h3>Our Vision</h3>
+      <p>To be the leading pharmacy chain known for quality and care.</p>
+    </div>
+    <div class="value-card">
+      <img src="https://via.placeholder.com/80" alt="Value">
+      <h3>Our Values</h3>
+      <p>Integrity, quality, and customer satisfaction are at the core of what we do.</p>
+    </div>
+  </section>
+
+  <footer>
+    <p>&copy; 2024 PharmaCare. All rights reserved.</p>
+  </footer>
+</body>
+</html>

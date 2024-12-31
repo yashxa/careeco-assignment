@@ -1,50 +1,42 @@
-import React, { createContext, useState } from 'react';
+import React, { createContext, useContext, useState, useEffect } from "react";
+import axios from "axios";
 
+const AppContext = createContext();
 
-// Create the AppContext
-export const AppContext = createContext();
-
-
-// Define the AppProvider
 export const AppProvider = ({ children }) => {
- const [cart, setCart] = useState([]);
+  const [cart, setCart] = useState([]);
 
+  // Fetch cart data from backend
+  const fetchCart = async () => {
+    try {
+      const response = await axios.get("http://localhost:5001/api/cart");
+      setCart(response.data);
+    } catch (error) {
+      console.error("Error fetching cart data:", error);
+    }
+  };
 
- // Add an item to the cart
- const addToCart = (item) => {
-   setCart((prevCart) => {
-     const existingItem = prevCart.find((cartItem) => cartItem.id === item.id);
-     if (existingItem) {
-       return prevCart.map((cartItem) =>
-         cartItem.id === item.id
-           ? { ...cartItem, quantity: cartItem.quantity + 1 }
-           : cartItem
-       );
-     }
-     return [...prevCart, { ...item, quantity: 1 }];
-   });
- };
+  // Add to cart function
+  const addToCart = async (productId) => {
+    try {
+      await axios.post("http://localhost:5001/api/cart", { productId, quantity: 1 });
+      fetchCart(); // Refresh the cart silently
+    } catch (error) {
+      console.error("Error adding to cart:", error);
+    }
+  };
+  
 
+  // Fetch cart on initial load
+  useEffect(() => {
+    fetchCart();
+  }, []);
 
- // Remove an item from the cart
- const removeFromCart = (itemId) => {
-   setCart((prevCart) => {
-     const existingItem = prevCart.find((cartItem) => cartItem.id === itemId);
-     if (existingItem?.quantity > 1) {
-       return prevCart.map((cartItem) =>
-         cartItem.id === itemId
-           ? { ...cartItem, quantity: cartItem.quantity - 1 }
-           : cartItem
-       );
-     }
-     return prevCart.filter((cartItem) => cartItem.id !== itemId);
-   });
- };
-
-
- return (
-   <AppContext.Provider value={{ cart, addToCart, removeFromCart }}>
-     {children}
-   </AppContext.Provider>
- );
+  return (
+    <AppContext.Provider value={{ cart, addToCart, fetchCart }}>
+      {children}
+    </AppContext.Provider>
+  );
 };
+
+export const useAppContext = () => useContext(AppContext);
